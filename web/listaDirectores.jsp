@@ -7,24 +7,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Página de prueba de operaciones CRUD con JPA - Listado Fotogramas</title>
+<title>Página de prueba de operaciones CRUD con JPA - Listado Directores</title>
 </head>
 <body>
-Página de prueba de operaciones CRUD con JPA - Listado Fotogramas<br>
+Página de prueba de operaciones CRUD con JPA - Listado Directores<br>
 <%
 
 DAO beanDao = new DAOImpl("EjemploCRUDJPA");
 
+List<Directores> listaDirectores = null;
 List<Fotograma> listaFotogramas = null;
 
-if ((listaFotogramas = beanDao.getFotogramas())!=null) {
+if ((listaDirectores = beanDao.getDirectores())!=null) {
 
 	out.println("Listado de los fotogramas<br>");
 
-	for (Fotograma fotograma: listaFotogramas) {
+	for (Directores director: listaDirectores) {
 
-		out.println("idFotograma: "+fotograma.getIdFotograma()+" - "+fotograma.getArchivo()+" - "+fotograma.getTitPelicula()+" - "+fotograma.getDirectores().getNombre()+"<br>");
-
+		out.println("Nombre director: "+director.getNombre()+" - Nacionalidad: "+director.getNacionalidad()+"<br>");
+		listaFotogramas = director.getFotogramas();
+		for (Fotograma fotograma: listaFotogramas) {
+			out.println("--> Nombre archivo: "+fotograma.getArchivo()+" - Película: "+fotograma.getTitPelicula()+"<br>");
+		}
 	}
 } else {
 	out.println("No se ha encontrado o ha habido un error al listar los fotogramas.<br>");

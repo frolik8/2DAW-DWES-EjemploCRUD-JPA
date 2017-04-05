@@ -10,24 +10,25 @@
 <title>Página de prueba de operaciones CRUD con JPA - Listado Fotogramas</title>
 </head>
 <body>
-Página de prueba de operaciones CRUD con JPA - Listado Fotogramas<br>
+Página de prueba de operaciones CRUD con JPA - Listado Administradores<br>
 <%
 
 DAO beanDao = new DAOImpl("EjemploCRUDJPA");
 
-List<Fotograma> listaFotogramas = null;
+List<Administrador> listaAdministradores = null;
 
-if ((listaFotogramas = beanDao.getFotogramas())!=null) {
+if ((listaAdministradores = beanDao.getAdministradores())!=null) {
 
-	out.println("Listado de los fotogramas<br>");
+	out.println("Listado de los administradores<br>");
 
-	for (Fotograma fotograma: listaFotogramas) {
+	for (Administrador administrador: listaAdministradores) {
 
-		out.println("idFotograma: "+fotograma.getIdFotograma()+" - "+fotograma.getArchivo()+" - "+fotograma.getTitPelicula()+" - "+fotograma.getDirectores().getNombre()+"<br>");
+		out.println("Nombre administrador: "+administrador.getNombre()+" - Login administrador: "+administrador.getLogin()+" - Nivel: "+administrador.getNivel());
+		out.println("<br>");
 
 	}
 } else {
-	out.println("No se ha encontrado o ha habido un error al listar los fotogramas.<br>");
+	out.println("No se ha encontrado o ha habido un error al listar los usuarios.<br>");
 }
 %>
 </body>

@@ -27,6 +27,10 @@ public class Fotograma implements Serializable {
 
 	private String titPelicula;
 
+	@ManyToOne
+	@JoinColumn(name="director", insertable=false, updatable=false)
+	private Directores directores;
+	
 	public Fotograma() {
 	}
 
@@ -76,6 +80,20 @@ public class Fotograma implements Serializable {
 
 	public void setTitPelicula(String titPelicula) {
 		this.titPelicula = titPelicula;
+	}
+
+	/**
+	 * @return the directores
+	 */
+	public Directores getDirectores() {
+		return directores;
+	}
+
+	/**
+	 * @param directores the directores to set
+	 */
+	public void setDirectores(Directores directores) {
+		this.directores = directores;
 	}
 
 }

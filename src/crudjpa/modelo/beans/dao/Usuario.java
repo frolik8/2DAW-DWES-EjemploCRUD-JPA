@@ -9,7 +9,9 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Inheritance (strategy=InheritanceType.SINGLE_TABLE)
 @Table(name="usuarios")
+@DiscriminatorColumn(name="DTYPE", discriminatorType=DiscriminatorType.STRING)
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,10 @@ public class Usuario implements Serializable {
 
 	private String nombre;
 
+	@OneToOne
+	@JoinColumn(name="login")
+	private Ranking ranking;
+	
 	public Usuario() {
 	}
 
@@ -56,6 +62,20 @@ public class Usuario implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the ranking
+	 */
+	public Ranking getRanking() {
+		return ranking;
+	}
+
+	/**
+	 * @param ranking the ranking to set
+	 */
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
 	}
 
 }

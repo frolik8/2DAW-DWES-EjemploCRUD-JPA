@@ -8,4 +8,7 @@ public interface DAO {
 	public boolean updateUsuario(Usuario usuario);
 	public boolean removeUsuario(String login);
 	public List<Fotograma> getFotogramas();
+	public List<Usuario> getUsuarios();
+	public List<Administrador> getAdministradores();
+	public List<Directores> getDirectores();
 }

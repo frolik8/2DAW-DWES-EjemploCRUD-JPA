@@ -6,5 +6,7 @@
 		<class>crudjpa.modelo.beans.dao.Genero</class>
 		<class>crudjpa.modelo.beans.dao.Ranking</class>
 		<class>crudjpa.modelo.beans.dao.Usuario</class>
+		<class>crudjpa.modelo.beans.dao.Directores</class>
+		<class>crudjpa.modelo.beans.dao.Administrador</class>
 	</persistence-unit>
 </persistence>

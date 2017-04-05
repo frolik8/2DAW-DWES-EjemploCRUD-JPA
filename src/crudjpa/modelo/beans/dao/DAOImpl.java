@@ -333,5 +333,175 @@ public class DAOImpl implements DAO {
 		
 		return listaFotogramas;
 	}
-
+	@Override
+	public List<Usuario> getUsuarios() {
+		List<Usuario> listaUsuarios = null;
+		
+		// Inicialización de objetos relacionados con JPA
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(unidadPersistencia);
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		Query query = null;
+		
+		
+		try {
+			tx.begin();
+			
+			// Se comprueba si la transacción está activa. Debe estarlo.
+			if (tx.isActive())
+				System.out.println("Transacción activa.<br>");
+			else
+				System.out.println("Cuidado: Transacción no activa.<br>");
+			
+			query = em.createNamedQuery("Usuario.findAll");
+			
+			listaUsuarios = (List<Usuario>) query.getResultList();
+			
+			// Se completa la transacción
+			tx.commit();
+			
+			
+		} catch (EntityExistsException e) {
+			System.out.println("Excepción de existencia previa de la entidad.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Excepción de instancia no es tipo entidad.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (TransactionRequiredException e) {
+			System.out.println("Problema con configuración de transacción.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (RollbackException e) {
+			System.out.println("El commit ha fallado.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (Exception e) {
+			System.out.println("Error desconocido en transacción con lista de objetos usuario.<br>");
+			e.printStackTrace();
+			if (tx.isActive())
+				tx.rollback();
+		}
+		finally {
+			em.close();
+			emf.close();
+		}
+		
+		return listaUsuarios;
+	}
+	@Override
+	public List<Directores> getDirectores() {
+		List<Directores> listaDirectores = null;
+		
+		// Inicialización de objetos relacionados con JPA
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(unidadPersistencia);
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		Query query = null;
+		
+		
+		try {
+			tx.begin();
+			
+			// Se comprueba si la transacción está activa. Debe estarlo.
+			if (tx.isActive())
+				System.out.println("Transacción activa.<br>");
+			else
+				System.out.println("Cuidado: Transacción no activa.<br>");
+			
+			query = em.createNamedQuery("Directores.findAll");
+			
+			listaDirectores = (List<Directores>) query.getResultList();
+			
+			// Se completa la transacción
+			tx.commit();
+			
+			
+		} catch (EntityExistsException e) {
+			System.out.println("Excepción de existencia previa de la entidad.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Excepción de instancia no es tipo entidad.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (TransactionRequiredException e) {
+			System.out.println("Problema con configuración de transacción.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (RollbackException e) {
+			System.out.println("El commit ha fallado.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (Exception e) {
+			System.out.println("Error desconocido en transacción con lista de objetos usuario.<br>");
+			e.printStackTrace();
+			if (tx.isActive())
+				tx.rollback();
+		}
+		finally {
+			em.close();
+			emf.close();
+		}
+		
+		return listaDirectores;
+	}
+	@Override
+	public List<Administrador> getAdministradores() {
+		List<Administrador> listaAdministradores = null;
+		
+		// Inicialización de objetos relacionados con JPA
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(unidadPersistencia);
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		Query query = null;
+		
+		
+		try {
+			tx.begin();
+			
+			// Se comprueba si la transacción está activa. Debe estarlo.
+			if (tx.isActive())
+				System.out.println("Transacción activa.<br>");
+			else
+				System.out.println("Cuidado: Transacción no activa.<br>");
+			
+			query = em.createNamedQuery("Administrador.findAll");
+			
+			listaAdministradores = (List<Administrador>) query.getResultList();
+			System.out.println("Numero administradores: "+listaAdministradores.size());
+			// Se completa la transacción
+			tx.commit();
+			
+			
+		} catch (EntityExistsException e) {
+			System.out.println("Excepción de existencia previa de la entidad.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Excepción de instancia no es tipo entidad.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (TransactionRequiredException e) {
+			System.out.println("Problema con configuración de transacción.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (RollbackException e) {
+			System.out.println("El commit ha fallado.<br>");
+			if (tx.isActive())
+				tx.rollback();
+		} catch (Exception e) {
+			System.out.println("Error desconocido en transacción con lista de objetos usuario.<br>");
+			e.printStackTrace();
+			if (tx.isActive())
+				tx.rollback();
+		}
+		finally {
+			em.close();
+			emf.close();
+		}
+		
+		return listaAdministradores;
+	}
 }
